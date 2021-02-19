@@ -1,0 +1,47 @@
+Serboi Florea-Dan 335CB
+
+Avem o singura sursa, main.py, pentru a rezolva cerinta data. Aceasta are 8 
+functii: read_NFA, eps_closure, compute_composed_state, compute_DFA, 
+write_final_states, write_transitions, write_DFA, main. Un singur modul este 
+importat, sys, pentru a avea acces la parametri dati din linia de comanda.
+
+In functia read_NFA extragem informatiile legate de NFA din fisierul de input: 
+numarul de stari, starile finale, simbolurile, multimea starilor si tranzitiile 
+NFA-ului.
+
+In functia eps_closure calculam inchiderea epsilon pentru o stare din NFA.
+
+In functia compute_composed_state concatenam o multime de stari sub forma unui 
+string, starile fiind delimitate prin '/'.
+
+In functia compute_DFA construim DFA-ul. Astfel, obtinem starile finale si 
+tranzitiile. Pasii construirii DFA-ului sunt urmatorii: 
+	- construim starea initiala a DFA-ului care reprezinta inchiderea 
+epsilon a starii initiale din NFA si o memoram ca string, concatenand starile, 
+delimitate prin '/';
+	- vom tine in memorie multimea starilor neprelucrate si a celor 
+prelucrate;
+	- vom porni de la starea initiala pe care o vom introduce in multimea 
+starilor neprelucrate;
+	- cat timp avem stari neprelucrate, extragem o stare neprelucrata. 
+Starea compusa este stare finala in DFA daca cel putin o stare continuta este 
+stare finala in NFA. In acest caz, o adaugam in multimea starilor finale. Apoi, 
+construim tranzitiile in DFA pentru acea stare si daca o stare succesor dintr-o 
+tranzitie nu se afla printre cele tratate, o adaugam in multimea celor 
+netratate.
+
+In functia write_final_states scriem in fisierul de output starile finale ale 
+DFA-ului.
+
+In functia write_transitions scirem in fisier tranzitiile DFA-ului. Aici 
+adaugam si tranzitiile pentru sink state.
+
+In functia write_DFA scriem toate informatiile cerute legate de DFA in fisierul 
+de output. Starile compuse obtinute anterior sunt mapate la intregi.
+
+In functia main extragem denumirile fisierelor de input si output date din 
+linia de comanda, folosindu-ne de modulul sys. Citim numarul de stari, starile 
+finale, simbolurile, multimea starilor si tranzitiile NFA-ului din fisierul de 
+input. Calculam inchiderea epsilon pentru fiecare stare a NFA-ului. In final, 
+calculam DFA-ul si scriem numarul de stari, starile finale si tranzitiile 
+DFA-ului in fisierul de ouput.
