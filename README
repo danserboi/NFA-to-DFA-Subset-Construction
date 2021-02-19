@@ -1,5 +1,3 @@
-Serboi Florea-Dan 335CB
-
 Avem o singura sursa, main.py, pentru a rezolva cerinta data. Aceasta are 8 
 functii: read_NFA, eps_closure, compute_composed_state, compute_DFA, 
 write_final_states, write_transitions, write_DFA, main. Un singur modul este 
